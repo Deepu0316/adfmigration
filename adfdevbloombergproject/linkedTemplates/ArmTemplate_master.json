@@ -1,0 +1,147 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfdevbloombergproject"
+		},
+		"ADLS_SQL_PARQUET_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLS_SQL_PARQUET'"
+		},
+		"DS_SQLTABLE_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'DS_SQLTABLE'"
+		},
+		"LS_ONPrem_SqlServer_DW_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_ONPrem_SqlServer_DW'"
+		},
+		"LS_Parent_SqlServer_DW_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_Parent_SqlServer_DW'"
+		},
+		"ADLS_SQL_PARQUET_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevboombergproject.dfs.core.windows.net/"
+		},
+		"DS_SQLTABLE_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-VP5BMQT\\SQLEXPRESS"
+		},
+		"DS_SQLTABLE_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sqlmigration"
+		},
+		"DS_SQLTABLE_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sa"
+		},
+		"LS_ONPrem_SqlServer_DW_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-VP5BMQT\\SQLEXPRESS"
+		},
+		"LS_ONPrem_SqlServer_DW_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sqlmigration"
+		},
+		"LS_ONPrem_SqlServer_DW_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Deepu"
+		},
+		"LS_Parent_SqlServer_DW_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "DESKTOP-VP5BMQT\\SQLEXPRESS"
+		},
+		"LS_Parent_SqlServer_DW_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sqlmigration"
+		},
+		"LS_Parent_SqlServer_DW_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Deepu"
+		},
+		"integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/e2867a29-9019-4ff0-9aab-6eef3d4782ef/resourcegroups/rgdevres/providers/Microsoft.DataFactory/factories/adfdevprojdes/integrationruntimes/integrationRuntime2"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfdevbloombergproject_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ADLS_SQL_PARQUET_accountKey": {
+						"value": "[parameters('ADLS_SQL_PARQUET_accountKey')]"
+					},
+					"DS_SQLTABLE_password": {
+						"value": "[parameters('DS_SQLTABLE_password')]"
+					},
+					"LS_ONPrem_SqlServer_DW_password": {
+						"value": "[parameters('LS_ONPrem_SqlServer_DW_password')]"
+					},
+					"LS_Parent_SqlServer_DW_password": {
+						"value": "[parameters('LS_Parent_SqlServer_DW_password')]"
+					},
+					"ADLS_SQL_PARQUET_properties_typeProperties_url": {
+						"value": "[parameters('ADLS_SQL_PARQUET_properties_typeProperties_url')]"
+					},
+					"integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+						"value": "[parameters('integrationRuntime1_properties_typeProperties_linkedInfo_resourceId')]"
+					},
+					"DS_SQLTABLE_properties_typeProperties_server": {
+						"value": "[parameters('DS_SQLTABLE_properties_typeProperties_server')]"
+					},
+					"DS_SQLTABLE_properties_typeProperties_database": {
+						"value": "[parameters('DS_SQLTABLE_properties_typeProperties_database')]"
+					},
+					"DS_SQLTABLE_properties_typeProperties_userName": {
+						"value": "[parameters('DS_SQLTABLE_properties_typeProperties_userName')]"
+					},
+					"LS_ONPrem_SqlServer_DW_properties_typeProperties_server": {
+						"value": "[parameters('LS_ONPrem_SqlServer_DW_properties_typeProperties_server')]"
+					},
+					"LS_ONPrem_SqlServer_DW_properties_typeProperties_database": {
+						"value": "[parameters('LS_ONPrem_SqlServer_DW_properties_typeProperties_database')]"
+					},
+					"LS_ONPrem_SqlServer_DW_properties_typeProperties_userName": {
+						"value": "[parameters('LS_ONPrem_SqlServer_DW_properties_typeProperties_userName')]"
+					},
+					"LS_Parent_SqlServer_DW_properties_typeProperties_server": {
+						"value": "[parameters('LS_Parent_SqlServer_DW_properties_typeProperties_server')]"
+					},
+					"LS_Parent_SqlServer_DW_properties_typeProperties_database": {
+						"value": "[parameters('LS_Parent_SqlServer_DW_properties_typeProperties_database')]"
+					},
+					"LS_Parent_SqlServer_DW_properties_typeProperties_userName": {
+						"value": "[parameters('LS_Parent_SqlServer_DW_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
